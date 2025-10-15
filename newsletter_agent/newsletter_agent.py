@@ -20,7 +20,7 @@ readwise_reader_server = MCPServerStdio(
             os.path.join(path_to_readwise_mcp, "dist/index.js")
         ],
         "env": {
-            "READWISE_TOKEN": os.getenv("READWISE_TOKEN")
+            "READWISE_TOKEN": os.getenv("READWISE_TOKEN", "your_readwise_token")
         }
     },
     cache_tools_list=True,
