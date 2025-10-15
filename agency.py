@@ -1,20 +1,27 @@
 from dotenv import load_dotenv
 from agency_swarm import Agency
 
-from example_agent import example_agent
-from example_agent2 import example_agent2
-
-import asyncio
+from yt_content_strategy_agent import yt_content_strategy_agent
+from title_generation_agent import title_generation_agent
+from grok_news_agent import grok_news_agent
+from newsletter_agent import newsletter_agent
+from agency_swarm.tools.send_message import SendMessageHandoff
+from skool_agent import skool_agent
 
 load_dotenv()
 
 # do not remove this method, it is used in the main.py file to deploy the agency (it has to be a method)
 def create_agency(load_threads_callback=None):
     agency = Agency(
-        example_agent, example_agent2,
-        communication_flows=[(example_agent, example_agent2)],
-        name="ExampleAgency", # don't forget to rename your agency!
-        shared_instructions="shared_instructions.md",
+        yt_content_strategy_agent, title_generation_agent, skool_agent,  # Set SkoolAgent as entry point
+        communication_flows=[
+            (yt_content_strategy_agent, title_generation_agent, SendMessageHandoff),
+            (yt_content_strategy_agent, grok_news_agent),
+            (yt_content_strategy_agent, newsletter_agent),
+            (yt_content_strategy_agent, skool_agent, SendMessageHandoff)
+        ],
+        name="YouTubeContentAgency", # don't forget to rename your agency!
+        shared_instructions="channel_description.md",
         load_threads_callback=load_threads_callback,
     )
 

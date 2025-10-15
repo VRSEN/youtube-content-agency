@@ -2,19 +2,17 @@ from agents import ModelSettings
 from openai.types.shared import Reasoning
 from agency_swarm import Agent
 
-
-example_agent = Agent(
-    name="ExampleAgent",
-    description="A helpful and knowledgeable assistant that provides comprehensive support and guidance across various domains.",
+skool_agent = Agent(
+    name="SkoolAgent",
+    description="Template agent for Skool operations. Fill in tools and instructions as needed.",
     instructions="./instructions.md",
     tools_folder="./tools",
     files_folder="./files",
     model="gpt-5",
     model_settings=ModelSettings(
-        max_tokens=25000,
         reasoning=Reasoning(
-            effort="medium",
-            summary="auto",
+            effort="low",
+            summary="auto"
         ),
     ),
 )
