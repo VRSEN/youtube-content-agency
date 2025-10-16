@@ -1,32 +1,49 @@
-# Agency Swarm GitHub Template
+# YouTube Content Agency
 
-A production-ready template for deploying [Agency Swarm](https://github.com/VRSEN/agency-swarm) agencies with Docker containerization and automated deployment to the [Agencii](https://agencii.ai/) cloud platform.
+A production-ready [Agency Swarm](https://github.com/VRSEN/agency-swarm) implementation for YouTube content strategy, featuring AI-powered news analysis, trend detection, competitor analysis, and content ideation.
 
-**🌐 [Agencii](https://agencii.ai/)** - The official cloud platform for Agency Swarm deployments  
-**🔗 [GitHub App](https://github.com/apps/agencii)** - Automated deployment integration
+> **💡 Learning Resource**: This is my personal favorite agency showcasing a variety of multi-agent techniques. Use it as a reference for learning how to build similar multi-agent systems with Agency Swarm.
+
+---
+
+## 🎯 What This Agency Does
+
+- **📰 Discover Trending Topics**: Analyzes news from multiple sources (Readwise Reader + X/Twitter)
+- **🔍 Analyze Competitors**: Tracks competitor videos and identifies successful strategies
+- **💡 Generate Video Ideas**: Creates data-driven content ideas based on trends and gaps
+- **✨ Optimize Titles**: Generates high-performing video titles using proven frameworks
+- **📊 Track Performance**: Analyzes channel metrics, comments, and transcripts
+- **⏱️ Create Timestamps**: Automatically generates engaging video timestamps
 
 ---
 
 ## 🚀 Quick Start
 
-### 1. Use This Template
+### Deploy to Agencii Platform (Recommended)
 
-Click **"Use this template"** to create your own repository, or:
+1. **Fork this repository** to your own GitHub account
+2. **Sign up** at [agencii.ai](https://agencii.ai/)
+3. **Connect your repository** and click deploy
+4. **Add API keys** when prompted during deployment
+
+That's it! Your agency will be deployed and ready to use.
+
+### Local Development
+
+#### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/agency-github-template.git
-cd agency-github-template
+git clone https://github.com/your-username/youtube-content-agency.git
+cd youtube-content-agency
 ```
 
-> **🌐 For Production**: Sign up at [agencii.ai](https://agencii.ai/) and use this template for automated cloud deployment
-
-### 2. Install Dependencies
+#### 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Set Up Environment Variables
+#### 3. Set Up Environment Variables
 
 Create a `.env` file in the root directory:
 
@@ -34,167 +51,158 @@ Create a `.env` file in the root directory:
 # Required
 OPENAI_API_KEY=your_openai_api_key_here
 
-# Optional - Add any additional API keys your agents need
-# EXAMPLE_API_KEY=your_api_key_here
+# News Sources
+READWISE_TOKEN=your_readwise_token_here
+XAI_API_KEY=your_xai_api_key_here
+
+# YouTube Integration
+YOUTUBE_API_KEY=your_youtube_api_key_here
+
+# Optional - for title generation
+NOTION_API_KEY=your_notion_api_key_here
 ```
 
-### 4. Test the Example Agency
+**Get your Readwise token**: [https://readwise.io/access_token](https://readwise.io/access_token)  
+**Sign up for Readwise Reader**: [https://readwise.io/read](https://readwise.io/read) (I use this to check newsletters)
+
+#### 4. Test the Agency
 
 ```bash
 python agency.py
 ```
 
-This runs the example agency in terminal mode for testing.
+---
 
-> **💡 Pro Tip**: For creating your own agency, open this template in [Cursor IDE](https://cursor.sh/) and use the AI assistant with the `.cursor/rules/workflow.mdc` file for automated agency creation!
+## 🤖 Agency Architecture
+
+```
+YouTubeContentStrategyAgent (Entry Point)
+├── NewsletterAgent (Readwise Reader articles)
+├── GrokNewsAgent (X/Twitter trends)
+├── TitleGenerationAgent (Title optimization)
+└── SkoolAgent (Community management)
+```
+
+**Agents**:
+
+- **YouTube Content Strategy Agent**: Main orchestrator for content strategy and analysis
+- **Newsletter Agent**: Fetches and analyzes news from Readwise Reader
+- **Grok News Agent**: Discovers viral AI content from X/Twitter
+- **Title Generation Agent**: Generates optimized titles using Notion frameworks (optional)
+- **Skool Agent**: Manages Skool community interactions
+
+---
+
+## 💡 Usage Examples
+
+Copy and paste these prompts to try the agency:
+
+```
+Generate video ideas based on the latest AI news
+```
+
+```
+Analyze competitor performance this week
+```
+
+```
+What should I make a video about next?
+```
+
+```
+Generate titles for a video about [topic]
+```
+
+```
+Analyze the performance of my latest video
+```
+
+```
+Generate timestamps for video [URL or ID]
+```
+
+---
+
+## 🔧 Customization
+
+### Configure Your Channel
+
+**File**: `channel_description.md`
+
+Edit this file to customize for your channel:
+
+- Channel details (name, description, subscriber count)
+- Content focus and topics
+- Target audience demographics
+- Mission, values, and goals
+
+### Update Competitor List
+
+**File**: `yt_content_strategy_agent/instructions.md`
+
+Find the "Primary Competitors" section and update with your competitors:
+
+```markdown
+#### Primary Competitors
+
+1. Competitor Name: `UCxxxxxxxxxxxxxxxxxx`
+2. Another Channel: `UCxxxxxxxxxxxxxxxxxx`
+```
+
+The agent will automatically track these channels.
+
+### Configure News Sources
+
+**Readwise Reader**:
+
+- Save AI-related articles, blogs, and documentation
+- Tag articles with relevant topics (e.g., "AI", "agents", "tools")
+- The agent will analyze articles from your reading list
+
+**X/Twitter via Grok**:
+
+- Automatically monitors viral AI content
+- No manual setup needed
+
+### Title Frameworks (Optional)
+
+**File**: `title_generation_agent/tools/NotionTitleFrameworksTool.py`
+
+If using Notion for title frameworks:
+
+1. Create a Notion database with your title templates
+2. Add your Notion database ID to the tool
+3. Set `NOTION_API_KEY` in your `.env` file
+
+**Note**: The Notion API key is optional. You can skip title generation if you don't need it.
 
 ---
 
 ## 🏗️ Project Structure
 
 ```
-agency-github-template/
-├── agency.py                 # Main entry point
-├── requirements.txt          # Python dependencies
-├── Dockerfile               # Container configuration
-├── .env                     # Environment variables (create this)
-├── example_agent/           # Your agency folder
-    ├── __init__.py
-    ├── example_agent.py
-    ├── instructions.md
-    ├── files/               # Local files accessible to the agent (via files_folder)
-    └── tools/
-        └── ExampleTool.py
-├── example_agent2/
-├── agency_manifesto.md  # Shared instructions
-├── requirements.txt
-├── .env
-└──...
+youtube-content-agency/
+├── agency.py                           # Main agency entry point
+├── requirements.txt                    # Python dependencies
+├── Dockerfile                          # Container configuration
+├── .env                                # Environment variables (create this)
+├── channel_description.md              # Your channel configuration
+│
+├── yt_content_strategy_agent/          # Main orchestrator
+├── newsletter_agent/                   # Readwise Reader integration
+├── grok_news_agent/                    # X/Twitter trends
+├── title_generation_agent/             # Title optimization
+├── skool_agent/                        # Community management
+│
+├── py-mcp-youtube-toolbox/             # YouTube MCP server
+└── readwise-reader-mcp/                # Readwise MCP server
 ```
 
 ---
 
-## 🔧 Creating Your Own Agency
+## 🛠️ Troubleshooting
 
-### 🤖 **AI-Assisted Agency Creation with Cursor**
-
-This template includes **AI-powered agency creation** using Cursor IDE:
-
-1. **Open this project in Cursor IDE**
-
-2. **Use the AI Assistant** to create your agency by referencing:
-   ```
-   📁 .cursor/rules/workflow.mdc
-   ```
-3. **Simply ask the AI:**
-
-   > "Create a new agency using the .cursor workflow"
-
-   The AI will guide you through the complete 7-step process:
-
-   - ✅ PRD Creation
-   - ✅ Folder Structure Setup
-   - ✅ Tool Development
-   - ✅ Agent Creation
-   - ✅ Agency Configuration
-   - ✅ Testing & Validation
-   - ✅ Iteration & Refinement
-
-### 📋 **What the AI Will Do For You**
-
-The AI assistant will automatically:
-
-- Create proper folder structures
-- Generate agent classes and instructions
-- Build custom tools with full functionality
-- Set up communication flows
-- Create the main agency file
-- Test everything to ensure it works
-
-### 🚀 **Manual Alternative (Advanced Users)**
-
-If you prefer manual setup, replace the `ExampleAgency/` folder with your own agency structure following the Agency Swarm conventions.
-
-### Agency Structure Requirements
-
-Your agency must follow this structure:
-
-- **Agency Folder**: Contains all agents and manifesto
-- **Agent Folders**: Each agent has its own folder with:
-  - `AgentName.py` - Agent class definition
-  - `instructions.md` - Agent-specific instructions
-  - `tools/` - Folder containing agent tools
-- **agency_manifesto.md** - Shared instructions for all agents
-
----
-
-## 🚀 Production Deployment with Agencii
-
-### **🌐 Deploy to Agencii Cloud Platform**
-
-For production deployment, use the [Agencii](https://agencii.ai/) platform:
-
-#### **Step 1: Create Account & Use Template**
-
-1. **Sign up** at [agencii.ai](https://agencii.ai/)
-2. **Use this template** to create your repository
-3. **Develop your agency** using Cursor IDE with `.cursor` workflow
-
-#### **Step 2: Install GitHub App**
-
-1. **Install** the [Agencii GitHub App](https://github.com/apps/agencii)
-2. **Grant permissions** to your repository
-3. **Configure** environment variables in Agencii dashboard
-
-#### **Step 3: Deploy**
-
-1. **Push to main branch** - Agencii automatically detects and deploys
-2. **Monitor deployment** in your Agencii dashboard
-3. **Access your live agency** via provided endpoints
-
-### **🔄 Automatic Deployments**
-
-- **Auto-deploy** on every push to `main` branch
-- **Zero-downtime** deployments with rollback capability
-- **Environment management** through Agencii dashboard
-
----
-
-## 🔨 Development Workflow
-
-### **🎯 Recommended: AI-Assisted Development**
-
-1. **Open Cursor IDE** with this template
-2. **Ask the AI**: _"Create a new agency using the .cursor workflow"_
-3. **Follow the guided process** - the AI handles everything automatically
-4. **Test your agency**: `python agency.py`
-5. **Deploy to production**: Install [Agencii GitHub App](https://github.com/apps/agencii) and push to main
-
-### **⚙️ Manual Development (Advanced)**
-
-If you prefer hands-on development:
-
-1. **Create Tools**: Build agent tools in `tools/` folders
-2. **Configure Agents**: Write `instructions.md` and agent classes
-3. **Test Locally**: Run `python agency.py`
-4. **Deploy**: Push to your preferred platform
-
-The `.cursor/rules/workflow.mdc` file contains the complete development specifications for manual implementation.
-
----
-
-## 📚 Key Features
-
-- **🌐 Agencii Cloud Deploy**: One-click deployment to [Agencii platform](https://agencii.ai/)
-- **🤖 AI-Assisted Creation**: Built-in Cursor IDE workflow for automated agency development
-- **🔄 Auto-Deploy**: Automatic deployment on push to main branch
-- **🚀 Ready-to-Deploy**: Dockerfile and requirements included
-- **🔧 Modular Structure**: Easy to customize and extend
-- **🛠️ Example Implementation**: Complete working example
-- **📦 Container Ready**: Docker configuration for any platform
-- **🔒 Environment Management**: Secure API key handling via Agencii dashboard
-- **🧪 Local Testing**: Terminal demo for development
-- **📋 Guided Workflow**: 7-step process with AI assistance
+If you encounter any issues, please [open an issue on GitHub](https://github.com/vrsen/youtube-content-agency/issues).
 
 ---
 
@@ -202,39 +210,9 @@ The `.cursor/rules/workflow.mdc` file contains the complete development specific
 
 - **[Agency Swarm Documentation](https://agency-swarm.ai/)**
 - **[Agency Swarm GitHub](https://github.com/VRSEN/agency-swarm)**
+- **[Readwise Reader MCP](https://github.com/edricgsh/readwise-reader-mcp)**
+- **[MCP Integration Guide](https://agency-swarm.ai/core-framework/tools/mcp-integration)**
 
 ---
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
----
-
-## ⚡ Quick Tips
-
-- **Start Small**: Begin with 1-2 agents and expand
-- **Test Tools**: Each tool should work independently
-- **Clear Instructions**: Write detailed agent instructions
-- **Environment Setup**: Always use `.env` for API keys
-- **Documentation**: Update instructions as you develop
-
----
-
-**Ready to build your AI agency?** 🤖✨
-
-### 🌐 **Production Route (Recommended)**
-
-1. **Sign up** at [agencii.ai](https://agencii.ai/)
-2. **Use this template** to create your repository
-3. **Install** [Agencii GitHub App](https://github.com/apps/agencii)
-4. **Push to main** → Automatic deployment!
-
-### 🛠️ **Development Route**
-
-Open this template in **Cursor IDE** and ask the AI to create your agency using the `.cursor` workflow. The AI will handle everything from setup to testing automatically!
-
-For manual development, replace the `ExampleAgency` with your own implementation and start deploying intelligent agent systems!
+Built with ❤️ using [Agency Swarm](https://agency-swarm.ai/)
