@@ -6,9 +6,11 @@ ENV PYTHONUNBUFFERED=1 \
 
 WORKDIR /app
 
-# Install uv
+# Install uv and Node.js
 RUN apt-get update && apt-get install -y curl && \
     curl -LsSf https://astral.sh/uv/install.sh | sh && \
+    curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
+    apt-get install -y nodejs && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
@@ -16,5 +18,10 @@ RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
 COPY . .
+
+# Install py-mcp-youtube-toolbox dependencies
+RUN if [ -f py-mcp-youtube-toolbox/requirements.txt ]; then \
+        pip install --no-cache-dir -r py-mcp-youtube-toolbox/requirements.txt; \
+    fi
 
 CMD python -u main.py
