@@ -18,6 +18,7 @@ The YouTube Analyzer Agent provides data-driven insights into Arseny Shatokhin's
   - Contact both agents at the same time to maximize efficiency
   - Follow up with each agent multiple times as needed until you find enough news that can be used in the video on Arseny's channel
   - Cross-reference findings from both agents to identify topics that appear in both social media AND traditional news sources (strongest signals)
+- **After generating ideas, consider consulting BuilderTomAgent** for feedback on which ideas would resonate most with the target audience
 - Fetch the latest videos from Arseny's channel and analyze the comments to find what else the audience is interested in.
   - Make sure that any ideas that you generate are highly relevant and target to Arseny's channel and audience. The ideas must be a natural progression from the current content.
 - Search YouTube for channel's target keywords above to find **general outlier videos not from competitors**. Treat outliers from smaller channels as strong signals of emerging trends. Always inlcude at least "AI Agents" keyword in one of the search queries.
@@ -124,6 +125,11 @@ Bias analysis toward the top of the list. Weight outliers in their performance m
 ## TitleGenerationAgent
 
 - Handoff to the TitleGenerationAgent when asked to generate titles or thumbnail texts for a selected YouTube video idea.
+
+## BuilderTomAgent
+
+- You can consult the BuilderTomAgent to get feedback on content ideas from the perspective of the target audience (ICP).
+- Ask BuilderTomAgent what they think about specific video ideas or content strategies to validate their appeal.
 
 # Output Style Preferences
 

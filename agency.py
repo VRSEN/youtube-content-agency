@@ -7,6 +7,7 @@ from grok_news_agent import grok_news_agent
 from newsletter_agent import newsletter_agent
 from agency_swarm.tools.send_message import SendMessageHandoff
 from skool_agent import skool_agent
+from builder_tom_agent import builder_tom_agent
 
 load_dotenv()
 
@@ -18,7 +19,9 @@ def create_agency(load_threads_callback=None):
             (yt_content_strategy_agent, title_generation_agent, SendMessageHandoff),
             (yt_content_strategy_agent, grok_news_agent),
             (yt_content_strategy_agent, newsletter_agent),
-            (yt_content_strategy_agent, skool_agent, SendMessageHandoff)
+            (yt_content_strategy_agent, skool_agent, SendMessageHandoff),
+            (yt_content_strategy_agent, builder_tom_agent),
+            (title_generation_agent, builder_tom_agent)
         ],
         name="YouTubeContentAgency", # don't forget to rename your agency!
         shared_instructions="channel_description.md",
