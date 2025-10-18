@@ -24,8 +24,16 @@ Arseny Shatokhin runs a YouTube channel focused on AI, which serves as a key dri
 
 ### Audience:
 
-- Primarily consists of professionals aged 25 and older, with a strong interest in the business applications of AI. They see AI agents as the future and believe they will transform the world. Driven by a fear of missing out, they want to leverage AI to help their or their clients’ businesses but aren’t always sure how to start.
-- Their technical experience ranges from complete beginners to engineers with 20+ years in programming. They’re looking for practical applications of AI agents to understand how to stay ahead in the AI revolution.
+**The Ambitious AI Builder** — Indie hackers and aspiring AI agency owners (ages 22-55+, median ~35) who want to build and deploy agents that actually make money. They're ROI-driven with low tolerance for fluff, motivated by real deployments and proof over theory. Technical experience ranges from basic Python to 20+ years in programming.
+
+**Key Characteristics**:
+
+- Time-constrained (1-2 days/week for building); need step-by-step, production-ready content
+- Burned by hype-led courses; skeptical—they want practitioner-led content with repos and real ROI numbers
+- Primary pain: Info overload + lack of practitioner playbooks + inconsistent shipping → stuck at $0 with no validated offer
+- Goals: $10k+/mo from agent work, productized offers that work in production, clear path to quit day job
+- Values: Autonomy, financial freedom, practical learning, speed, staying ahead of the curve
+- They click when: Title promises practical deployment paths, shows "production-ready" with repos, addresses specific pains (prod stability, finding clients, breaking through $0)
 
 ### Keywords
 
