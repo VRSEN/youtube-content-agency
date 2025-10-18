@@ -2,8 +2,6 @@
 
 A production-ready [Agency Swarm](https://github.com/VRSEN/agency-swarm) implementation for YouTube content strategy, featuring AI-powered news analysis, trend detection, competitor analysis, and content ideation.
 
-> **💡 Learning Resource**: This is my personal favorite agency showcasing a variety of multi-agent techniques. Use it as a reference for learning how to build similar multi-agent systems with Agency Swarm.
-
 ---
 
 ## 🎯 What This Agency Does
@@ -17,9 +15,7 @@ A production-ready [Agency Swarm](https://github.com/VRSEN/agency-swarm) impleme
 
 ---
 
-## 🚀 Quick Start
-
-### Deploy to Agencii Platform (Recommended)
+## 🚀 Quick Start on Agencii Platform (Recommended)
 
 1. **Fork this repository** to your own GitHub account
 2. **Sign up** at [agencii.ai](https://agencii.ai/)
@@ -28,51 +24,6 @@ A production-ready [Agency Swarm](https://github.com/VRSEN/agency-swarm) impleme
 
 That's it! Your agency will be deployed and ready to use.
 
-### Local Development
-
-#### 1. Clone the Repository
-
-```bash
-git clone https://github.com/your-username/youtube-content-agency.git
-cd youtube-content-agency
-```
-
-#### 2. Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-#### 3. Set Up Environment Variables
-
-Create a `.env` file in the root directory:
-
-```bash
-# Required
-OPENAI_API_KEY=your_openai_api_key_here
-
-# News Sources
-READWISE_TOKEN=your_readwise_token_here
-XAI_API_KEY=your_xai_api_key_here
-
-# YouTube Integration
-YOUTUBE_API_KEY=your_youtube_api_key_here
-
-# Optional - for title generation
-NOTION_API_KEY=your_notion_api_key_here
-```
-
-**Get your Readwise token**: [https://readwise.io/access_token](https://readwise.io/access_token)  
-**Sign up for Readwise Reader**: [https://readwise.io/read](https://readwise.io/read) (I use this to check newsletters)
-
-#### 4. Test the Agency
-
-```bash
-python agency.py
-```
-
----
-
 ## 🤖 Agency Architecture
 
 ```
@@ -80,7 +31,8 @@ YouTubeContentStrategyAgent (Entry Point)
 ├── NewsletterAgent (Readwise Reader articles)
 ├── GrokNewsAgent (X/Twitter trends)
 ├── TitleGenerationAgent (Title optimization)
-└── SkoolAgent (Community management)
+│   └── BuilderTomAgent (ICP feedback)
+└── BuilderTomAgent (ICP feedback)
 ```
 
 **Agents**:
@@ -89,7 +41,7 @@ YouTubeContentStrategyAgent (Entry Point)
 - **Newsletter Agent**: Fetches and analyzes news from Readwise Reader
 - **Grok News Agent**: Discovers viral AI content from X/Twitter
 - **Title Generation Agent**: Generates optimized titles using Notion frameworks (optional)
-- **Skool Agent**: Manages Skool community interactions
+- **Builder Tom Agent**: ICP persona providing audience feedback on titles and content ideas
 
 ---
 
@@ -192,10 +144,55 @@ youtube-content-agency/
 ├── newsletter_agent/                   # Readwise Reader integration
 ├── grok_news_agent/                    # X/Twitter trends
 ├── title_generation_agent/             # Title optimization
-├── skool_agent/                        # Community management
+├── builder_tom_agent/                  # ICP feedback persona
 │
 ├── py-mcp-youtube-toolbox/             # YouTube MCP server
 └── readwise-reader-mcp/                # Readwise MCP server
+```
+
+---
+
+## 💻 Local Development
+
+#### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/youtube-content-agency.git
+cd youtube-content-agency
+```
+
+#### 2. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+#### 3. Set Up Environment Variables
+
+Create a `.env` file in the root directory:
+
+```bash
+# Required
+OPENAI_API_KEY=your_openai_api_key_here
+
+# News Sources
+READWISE_TOKEN=your_readwise_token_here
+XAI_API_KEY=your_xai_api_key_here
+
+# YouTube Integration
+YOUTUBE_API_KEY=your_youtube_api_key_here
+
+# Optional - for title generation
+NOTION_API_KEY=your_notion_api_key_here
+```
+
+**Get your Readwise token**: [https://readwise.io/access_token](https://readwise.io/access_token)  
+**Sign up for Readwise Reader**: [https://readwise.io/read](https://readwise.io/read) (I use this to check newsletters)
+
+#### 4. Test the Agency
+
+```bash
+python agency.py
 ```
 
 ---
