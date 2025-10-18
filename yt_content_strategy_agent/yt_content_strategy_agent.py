@@ -10,8 +10,6 @@ load_dotenv()
 
 path_to_stdio_mcp_server = os.path.join(os.path.dirname(__file__), "../py-mcp-youtube-toolbox")
 
-print(os.getenv("YOUTUBE_API_KEY"))
-
 youtube_toolbox_server = MCPServerStdio(
     name="YouTube Toolbox",
     params={
