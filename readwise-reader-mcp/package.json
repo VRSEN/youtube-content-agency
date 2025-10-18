@@ -1,0 +1,49 @@
+{
+  "name": "readwise-reader-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for Readwise Reader API",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:manual": "tsx manual-test.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "dotenv": "^16.3.0",
+    "node-html-parser": "^7.0.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.0.0",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "jest": {
+    "preset": "ts-jest/presets/default-esm",
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ],
+    "globals": {
+      "ts-jest": {
+        "useESM": true
+      }
+    },
+    "testMatch": [
+      "**/__tests__/**/*.test.ts"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!src/**/*.d.ts"
+    ]
+  }
+}
