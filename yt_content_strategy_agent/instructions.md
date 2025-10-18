@@ -130,6 +130,7 @@ Bias analysis toward the top of the list. Weight outliers in their performance m
 
 - You can consult the BuilderTomAgent to get feedback on content ideas from the perspective of the target audience (ICP).
 - Ask BuilderTomAgent what they think about specific video ideas or content strategies to validate their appeal.
+- Make sure to do this **before** you return the results to the user.
 
 # Output Style Preferences
 
