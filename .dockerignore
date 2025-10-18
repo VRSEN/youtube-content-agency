@@ -57,11 +57,4 @@ logs/
 .cursor/
 .cache/
 
-# MCP servers - exclude built artifacts but include source files
-readwise-reader-mcp/
-!readwise-reader-mcp/src/
-!readwise-reader-mcp/package.json
-!readwise-reader-mcp/package-lock.json
-!readwise-reader-mcp/tsconfig.json
-
 
