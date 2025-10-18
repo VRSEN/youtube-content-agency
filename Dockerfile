@@ -13,6 +13,11 @@ RUN apt-get update && apt-get install -y curl && \
     apt-get install -y nodejs && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# install npm packages in readwise-reader-mcp
+RUN cd readwise-reader-mcp && \
+    npm install && \
+    npm run build
+
 COPY requirements.txt .
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
