@@ -13,6 +13,9 @@ RUN apt-get update && apt-get install -y curl && \
     apt-get install -y nodejs && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# init git submodules
+RUN git submodule update --init --recursive
+
 # install npm packages in readwise-reader-mcp
 RUN cd readwise-reader-mcp && \
     npm install && \
