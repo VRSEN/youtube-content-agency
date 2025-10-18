@@ -13,7 +13,7 @@ load_dotenv()
 # do not remove this method, it is used in the main.py file to deploy the agency (it has to be a method)
 def create_agency(load_threads_callback=None):
     agency = Agency(
-        yt_content_strategy_agent, title_generation_agent,
+        yt_content_strategy_agent, title_generation_agent, builder_tom_agent,
         communication_flows=[
             (yt_content_strategy_agent, title_generation_agent, SendMessageHandoff),
             (yt_content_strategy_agent, grok_news_agent),
