@@ -8,6 +8,6 @@ script_writer_agent = Agent(
     description="Expert script writer for YouTube content using Claude Sonnet 4.5 model.",
     instructions="./instructions.md",
     tools_folder="./tools",
-    model="litellm/anthropic/claude-sonnet-4-5-20250929",
+    model="gpt-4o",
 )
 
