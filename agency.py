@@ -7,16 +7,16 @@ from grok_news_agent import grok_news_agent
 from newsletter_agent import newsletter_agent
 from agency_swarm.tools.send_message import SendMessageHandoff
 from builder_tom_agent import builder_tom_agent
-
-load_dotenv()
+from script_writer_agent import script_writer_agent
 
 # do not remove this method, it is used in the main.py file to deploy the agency (it has to be a method)
 def create_agency(load_threads_callback=None):
     agency = Agency(
-        yt_content_strategy_agent, title_generation_agent, builder_tom_agent,
+        yt_content_strategy_agent, title_generation_agent, builder_tom_agent, script_writer_agent,
         communication_flows=[
             (yt_content_strategy_agent, title_generation_agent, SendMessageHandoff),
             (yt_content_strategy_agent, grok_news_agent),
+            (yt_content_strategy_agent, script_writer_agent, SendMessageHandoff),
             (yt_content_strategy_agent, newsletter_agent),
             (yt_content_strategy_agent, builder_tom_agent),
             (title_generation_agent, builder_tom_agent)
