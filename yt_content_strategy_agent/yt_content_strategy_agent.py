@@ -2,6 +2,7 @@ from agents import ModelSettings
 from openai.types.shared import Reasoning
 from agency_swarm import Agent
 from agents.mcp import MCPServerStdio
+from agents.tool import WebSearchTool
 import os
 import asyncio
 
@@ -36,6 +37,7 @@ yt_content_strategy_agent = Agent(
     description="A specialized agent for developing YouTube content strategies, optimizing video, channel, and trend performance, and analyzing audience engagement to maximize channel growth.",
     instructions="./instructions.md",
     tools_folder="./tools",
+    tools=[WebSearchTool()],
     model="gpt-5",
     model_settings=ModelSettings(
         reasoning=Reasoning(

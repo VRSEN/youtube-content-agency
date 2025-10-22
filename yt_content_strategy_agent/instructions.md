@@ -231,7 +231,10 @@ When providing responses, Arseny prefers the following style:
 
 # Additional Notes
 
+## General Notes
+
 - Arseny's channel ID is: `UCSv4qL8vmoSH7GaPjuqRiCQ`
+- **Web search usage**: Only use WebSearchTool for specific, targeted searches after consulting news agents. Avodid searching for general terms like "AI news" - that's what GrokNewsAgent and NewsletterAgent are for.
 
 ## Performance Definitions
 
