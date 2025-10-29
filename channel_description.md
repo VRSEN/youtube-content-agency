@@ -24,16 +24,16 @@ Arseny Shatokhin runs a YouTube channel focused on AI, which serves as a key dri
 
 ### Audience:
 
-**The Ambitious AI Builder** — Indie hackers and aspiring AI agency owners (ages 22-55+, median ~35) who want to build and deploy agents that actually make money. They're ROI-driven with low tolerance for fluff, motivated by real deployments and proof over theory. Technical experience ranges from basic Python to 20+ years in programming.
+**The Technical Operator-Builder** — Founders/owner-operators or senior ICs (engineering/PM/ops) pivoting to AI, running solo to small team (1-5) agencies/SaaS/consultancies. Ages late 30s to mid-40s with 10-20+ years experience in traditional industries (construction, real estate, manufacturing, logistics, finance, e-commerce). They're building agent-powered solutions and shifting from bespoke consulting to productized services.
 
 **Key Characteristics**:
 
-- Time-constrained (1-2 days/week for building); need step-by-step, production-ready content
-- Burned by hype-led courses; skeptical—they want practitioner-led content with repos and real ROI numbers
-- Primary pain: Info overload + lack of practitioner playbooks + inconsistent shipping → stuck at $0 with no validated offer
-- Goals: $10k+/mo from agent work, productized offers that work in production, clear path to quit day job
-- Values: Autonomy, financial freedom, practical learning, speed, staying ahead of the curve
-- They click when: Title promises practical deployment paths, shows "production-ready" with repos, addresses specific pains (prod stability, finding clients, breaking through $0)
+- Strong technical foundation: Python/JS, CRMs (GoHighLevel, custom), APIs, n8n/zapier, cloud infrastructure; using frameworks like Agency Swarm/Agencii
+- Shipping-first mindset with low tolerance for hype or demos that don't translate to production
+- Primary pain: Gap between agent capabilities and production-grade delivery + productization challenges (bespoke → repeatable) + lack of vertical-specific blueprints
+- Goals: First 3-10 paying clients or reliable MRR stream; productized, scalable offerings; become vertical niche expert; defensible IP
+- Values: Reliability, data ownership, security, shipping over theory, vertical expertise, recurring revenue
+- They click when: Title promises production-ready solutions with battle-tested templates, vertical-specific blueprints (e.g., "real estate CRM"), addresses productization/integration/monitoring challenges
 
 ### Keywords
 
@@ -52,11 +52,17 @@ You can use the following keywords in your research:
 - AI Coding
 - Context Engineering
 
-# Mission
+## Channel Mission
 
-Our mission is to help developers, builders and techpreneurs leverage AI agents for business growth.
+Our mission is to help technical operators scale their expertise with AI agents.
 
-# Values
+### Goals
+
+- Ensure every single video becomes an outlier.
+- Stay consistent by posting at least once a week.
+- Increase traffic to Arseny's SaaS product and agency to get more users and clients.
+
+### Values
 
 - 💎 **Quality**  
   We drive our views with high quality, professional content.
@@ -70,7 +76,7 @@ Our mission is to help developers, builders and techpreneurs leverage AI agents 
 - 🛠 **Practicality**  
   We drive engagement with usable, practical tutorials or explanations, applicable to real world projects.
 
-# Principles
+### Principles
 
 - 🎯 **Quality over quantity**  
   We focus on long lasting content, instead of on short news or fleeting trends.
@@ -89,9 +95,3 @@ Our mission is to help developers, builders and techpreneurs leverage AI agents 
 
 - 📻 **Build trust with audience**  
   Open authenticity to build better connection with audience. Build extra connections with guests.
-
-# Goals
-
-- Ensure every single video becomes an outlier.
-- Stay consistent by posting at least once a week.
-- Increase traffic to Arseny's SaaS product and agency to get more users and clients.
