@@ -217,6 +217,8 @@ Bias analysis toward the top of the list. Weight outliers in their performance m
 - In your output, show the iteration process: what got cut, what improved, BuilderTom's reasoning
 - BuilderTom represents your ICP - if they won't click, neither will your audience
 
+**Important**: Send ONLY context, task, and ideas to review. No opinions, rankings, or explanations. Keep messages neutral and unbiased. Seek honest feedback from BuilderTomAgent, not confirmation of your own assumptions.
+
 # Output Style Preferences
 
 When providing responses, Arseny prefers the following style:
