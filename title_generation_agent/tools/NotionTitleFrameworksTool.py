@@ -28,20 +28,30 @@ class NotionTitleFrameworksTool(BaseTool):
             
             notion = Client(auth=notion_api_key)
             
-            # Step 2: Query the database to get ALL frameworks (handle pagination)
+            # Step 2: Retrieve database to get data source ID (required for querying in newer API)
+            database = notion.databases.retrieve(DATABASE_ID)
+            data_sources = database.get("data_sources", [])
+            
+            if not data_sources:
+                return "❌ Error: Database has no data sources. Cannot query database."
+            
+            # Use the first data source (most databases have one)
+            data_source_id = data_sources[0]["id"]
+            
+            # Step 3: Query the data source to get ALL frameworks (handle pagination)
             all_results = []
             start_cursor = None
             
             while True:
                 query_params = {
-                    "database_id": DATABASE_ID,
                     "page_size": 100,  # Maximum per page
                 }
                 
                 if start_cursor:
                     query_params["start_cursor"] = start_cursor
                 
-                response = notion.databases.query(**query_params)
+                # Query through data source (newer API requirement)
+                response = notion.data_sources.query(data_source_id, **query_params)
                 all_results.extend(response.get("results", []))
                 
                 # Check if there are more pages
@@ -50,7 +60,7 @@ class NotionTitleFrameworksTool(BaseTool):
                     
                 start_cursor = response.get("next_cursor")
             
-            # Step 3: Format the results
+            # Step 4: Format the results
             if not all_results:
                 return "📝 No title frameworks found in the database."
             
@@ -112,7 +122,7 @@ class NotionTitleFrameworksTool(BaseTool):
                 
                 formatted_frameworks.append("-" * 50)
             
-            # Step 4: Add usage guidance
+            # Step 5: Add usage guidance
             formatted_frameworks.append("\n💡 **Usage Guidelines:**")
             formatted_frameworks.append("• Select frameworks that naturally fit your video content")
             formatted_frameworks.append("• Adapt frameworks to match your specific topic and keywords")
