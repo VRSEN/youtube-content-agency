@@ -28,11 +28,20 @@ class NotionScriptExamplesTool(BaseTool):
             
             notion = Client(auth=notion_api_key)
             
-            # Step 2: Query the database with filter for "Script" in title
+            # Step 2: Retrieve database to get data source ID (required for querying in newer API)
+            database = notion.databases.retrieve(DATABASE_ID)
+            data_sources = database.get("data_sources", [])
+            
+            if not data_sources:
+                return "❌ Error: Database has no data sources. Cannot query database."
+            
+            # Use the first data source (most databases have one)
+            data_source_id = data_sources[0]["id"]
+            
+            # Step 3: Query the data source with filter for "Script" in title
             # Fetch more than needed and filter client-side to ensure quality
             # Sort by last edited time to get the most recent scripts first
             query_params = {
-                "database_id": DATABASE_ID,
                 "page_size": 50,  # Fetch 50 to filter down to 10 good ones
                 "filter": {
                     "property": "Name",
@@ -48,10 +57,11 @@ class NotionScriptExamplesTool(BaseTool):
                 ]
             }
             
-            response = notion.databases.query(**query_params)
+            # Query through data source (newer API requirement)
+            response = notion.data_sources.query(data_source_id, **query_params)
             all_results = response.get("results", [])
             
-            # Step 3: Filter results to only include actual script pages
+            # Step 4: Filter results to only include actual script pages
             # Exclude pages with "Description", "Thumbnail", etc. in the title
             filtered_results = []
             exclude_keywords = ["description", "thumbnail", "idea", "tags"]
@@ -84,7 +94,7 @@ class NotionScriptExamplesTool(BaseTool):
             
             all_results = filtered_results
             
-            # Step 4: For each filtered page, fetch the full content
+            # Step 5: For each filtered page, fetch the full content
             if not all_results:
                 return "📝 No script examples found in the database with 'Script' in the title."
             
@@ -112,7 +122,7 @@ class NotionScriptExamplesTool(BaseTool):
                 
                 formatted_scripts.append(f"## {idx}. {page_title}\n")
                 
-                # Step 5: Fetch the page content (blocks)
+                # Step 6: Fetch the page content (blocks)
                 try:
                     blocks = []
                     block_cursor = None
@@ -129,7 +139,7 @@ class NotionScriptExamplesTool(BaseTool):
                             break
                         block_cursor = block_response.get("next_cursor")
                     
-                    # Step 6: Convert blocks to markdown
+                    # Step 7: Convert blocks to markdown
                     content_markdown = self._blocks_to_markdown(blocks)
                     formatted_scripts.append(content_markdown)
                     
@@ -138,7 +148,7 @@ class NotionScriptExamplesTool(BaseTool):
                 
                 formatted_scripts.append("\n" + "-" * 80 + "\n\n")
             
-            # Step 7: Add usage guidance
+            # Step 8: Add usage guidance
             formatted_scripts.append("\n💡 **How to Use These Examples:**\n")
             formatted_scripts.append("• Study the tone, pacing, and structure of Arseny's scripts")
             formatted_scripts.append("• Notice how he introduces concepts and builds engagement")
