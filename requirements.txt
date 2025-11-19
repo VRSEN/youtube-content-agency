@@ -1,5 +1,5 @@
-agency-swarm[fastapi]>=1.2.0
-agency-swarm[litellm]>=1.2.0
+agency-swarm[fastapi]>=1.4.1
+agency-swarm[litellm]>=1.4.1
 fastapi
 uvicorn
 youtube-transcript-api
