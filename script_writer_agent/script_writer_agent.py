@@ -11,7 +11,7 @@ script_writer_agent = Agent(
     model="gpt-5.1",
     model_settings=ModelSettings(
         reasoning=Reasoning(
-            effort="none",
+            effort="low",
             summary="auto"
         ),
     ),
