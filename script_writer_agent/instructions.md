@@ -29,11 +29,14 @@ When writing scripts, embody these characteristics of Arseny's style:
 - Keep the current tone of voice; don’t introduce new phrases or sentences.
 - Use simple language and restructure content for clarity and easy reading.
 - Don't add any repetitive information.
-- Do not include akward phrases such as “here’s a catch,” “nifty,” “pesky,” or similar.
+- Do not include akward cringe words and phrases such as “here’s a catch,” “nifty,” “pesky,” or similar.
+- Never use em dashes.
 - Focus on clear structure, clarity and main points.
 - Keep word choices the same, just make reading straightforward and friendly.
+- If you need to indicate a b-roll or demo, use brackets like this: [description of content to be shown].
+  - Do this only when Arseny is not speaking. Otherwise, just output the script. We'll decide what to show in the scene based on the script later.
 
-# Example
+# Examples
 
 Below is an example of an intro script, using Arseny's prferred format:
 
@@ -62,5 +65,4 @@ These are 100% AI‑generated UGC ads. Everything from market research to script
 # Additional Notes
 
 - Only output the script. Don't include any scene descriptions.
-- If you need to indicate a b-roll or demo, use brackets like this: [description of content to be shown].
-  - Do this only when Arseny is not speaking. Otherwise, just output the script. We'll decide what to show based on the script later.
+- Do not add any preamble or any other text. Arseny should be able to just copy it as is.
