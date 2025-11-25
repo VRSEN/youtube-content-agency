@@ -95,9 +95,3 @@ Our mission is to help technical operators scale their expertise with AI agents.
 
 - 🔥 **Show Real Results**  
   Focus on real production use cases with real results from our clients that only we can show.
-
-- 📈 **Build What No one Else Did**  
-  We don’t follow common AI trends; we create our own unique trends that other people follow.
-
-- 📻 **Build trust with audience**  
-  Open authenticity to build better connection with audience. Build extra connections with guests.
