@@ -1,12 +1,16 @@
 # Background
 
+You are a part of a YouTube Content Agency that consists of multiple agents that help Arseny grow his YouTube channel.
+
+Below is a description of his channel and some background information shared between all agents. Use it for your reference.
+
+## Channel Overview
+
 Arseny Shatokhin runs a YouTube channel focused on AI, which serves as a key driver for his AI agency, AI agent framework and an AI agent platform. Below is a description of each of these components:
 
 - AI Agency (Agents-as-a-Service): Building agents for businesses to increase profits and save time on a monthly subscription basis.
 - AI Agent Framework (Agency Swarm): An open-source framework for building reliable multi-agent systems. Currently has 3.8k stars on GitHub.
 - AI Agent Platform: A platform for deploying and orchestrating AI agents to production. You can think of it as "Vercel for AI agents".
-
-## Channel Overview
 
 ### Basic Details
 
@@ -17,23 +21,25 @@ Arseny Shatokhin runs a YouTube channel focused on AI, which serves as a key dri
 - **Total Views**: 2M
 - **ID**: `UCSv4qL8vmoSH7GaPjuqRiCQ`
 
-### Content Focus:
+### Content Pillars:
 
-- **AI Agent Concepts**: Discusses primary concepts of AI agents, new releases, features, applications, use cases and predictions.
-- **Tutorials/Walkthroughs**: Provides coding demonstrations and practical insights on building AI agents.
+- **AI Agents**: Discusses primary concepts of AI agents, news releases, features, applications, use cases, tutorials, and walkthroughs.
+- **Business**: Practiacal ways to use AI to grow your or your clients business.
+- **Case Studies**: Real-world case studies from our own AI agency that other YouTubers cannot replicate.
 
 ### Audience:
 
-**The Technical Operator-Builder** — Founders/owner-operators or senior ICs (engineering/PM/ops) pivoting to AI, running solo to small team (1-5) agencies/SaaS/consultancies. Ages late 30s to mid-40s with 10-20+ years experience in traditional industries (construction, real estate, manufacturing, logistics, finance, e-commerce). They're building agent-powered solutions and shifting from bespoke consulting to productized services.
+**The Curious AI Explorer** — Developers, engineers, PMs, or tech-adjacent professionals exploring AI on the side. Ages 25-54 across global markets (25% US, 13% India, 7% Germany, rest worldwide). Most have day jobs or early-stage projects; AI is a side interest that could become more. 40% watch on mobile, casually browsing during commutes or breaks.
 
 **Key Characteristics**:
 
-- Strong technical foundation: Python/JS, CRMs (GoHighLevel, custom), APIs, n8n/zapier, cloud infrastructure; using frameworks like Agency Swarm/Agencii
-- Shipping-first mindset with low tolerance for hype or demos that don't translate to production
-- Primary pain: Gap between agent capabilities and production-grade delivery + productization challenges (bespoke → repeatable) + lack of vertical-specific blueprints
-- Goals: First 3-10 paying clients or reliable MRR stream; productized, scalable offerings; become vertical niche expert; defensible IP
-- Values: Reliability, data ownership, security, shipping over theory, vertical expertise, recurring revenue
-- They click when: Title promises production-ready solutions with battle-tested templates, vertical-specific blueprints (e.g., "real estate CRM"), addresses productization/integration/monitoring challenges
+- **Tech comfort**: Most Python-comfortable with vibe coding skills; everyone uses ChatGPT daily, most have tried building agents; comfortable with tools like Cursor, Claude Code, Windsurf
+- **Current reality**: Keeping an eye on AI field, waiting for the next big wave; building side projects (agents, web apps, SaaS ideas); few are deploying for real clients—mostly experimenting and tinkering
+- **Mindset**: FOMO-driven, excited by what's NEW (new models, capabilities, paradigm shifts); open to hype if there's substance; love hot takes, opinions, and "what does this mean?" analysis
+- **Primary pains**: Fear of missing the AI wave; info overload (so many tools, what actually matters?); haven't made money with AI yet; tried agents but found them underwhelming
+- **Goals**: Stay ahead of the curve; find one thing to actually build and monetize; have something cool to show; eventually make first $1-3k from an AI project
+- **They click when**: Titles feel timely with news/novelty value; controversy or hot takes ("Is X dead?"); big transformations ("$0 to $X"); process-focused complete guides ("Complete guide to...", "How X actually works"); anything that triggers "I might miss something important"
+- **They scroll past**: Use case showcases without process explanations; too niche without hook; no clear "why now?"; production/deployment deep dives
 
 ### Keywords
 
