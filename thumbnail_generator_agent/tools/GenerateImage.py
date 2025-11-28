@@ -12,10 +12,6 @@ from thumbnail_generator_agent.tools.image_utils import (
     get_images_dir,
     MODEL_NAME,
     extract_image_from_response,
-    process_variant_result,
-    run_parallel_variants,
-    create_result_summary,
-    compress_image_for_base64,
     load_all_reference_images,
 )
 
@@ -49,10 +45,6 @@ class GenerateImage(BaseTool):
         ...,
         description="The name for the generated thumbnail file (without extension, e.g., 'problem_angle_v1')",
     )
-    num_variants: int = Field(
-        default=1,
-        description="Number of thumbnail variants to generate (1-4, default is 1)",
-    )
     aspect_ratio: Literal["16:9"] = Field(
         default="16:9",
         description="The aspect ratio of the thumbnail (YouTube standard is 16:9)",
@@ -72,13 +64,6 @@ class GenerateImage(BaseTool):
             raise ValueError("file_name must not be empty")
         return value
 
-    @field_validator("num_variants")
-    @classmethod
-    def _validate_num_variants(cls, value: int) -> int:
-        if value < 1 or value > 4:
-            raise ValueError("num_variants must be between 1 and 4")
-        return value
-
     async def run(self) -> list:
         """Generate thumbnail images using the Gemini API."""
 
@@ -88,7 +73,6 @@ class GenerateImage(BaseTool):
             raise RuntimeError("GOOGLE_API_KEY environment variable is required")
 
         print(f"Generating thumbnail with prompt: {self.prompt}")
-        print(f"Generating {self.num_variants} variant(s)")
 
         # Step 2: Automatically load all reference images from reference_thumbnails folder
         reference_images = load_all_reference_images()
@@ -105,10 +89,10 @@ class GenerateImage(BaseTool):
 
         self.prompt = self.prompt.strip() + " Use attached previous thumbnails from our channel as a reference. Generate a new thumbnail as close as possible to the same style, using our branding, colors, style, similar elements, and the same person from references."
 
-        def generate_single_variant(variant_num: int):
-            """Generate a single thumbnail variant"""
+        def generate_single_variant():
+            """Generate a single thumbnail"""
             try:
-                print(f"Generating variant {variant_num}/{self.num_variants}")
+                print(f"Generating thumbnail...")
 
                 # Prepare contents for the API call
                 # If we have reference images, include them before the prompt
@@ -132,37 +116,28 @@ class GenerateImage(BaseTool):
                 image, text_output = extract_image_from_response(response)
 
                 if image is None:
-                    print(
-                        f"Warning: No image was generated for variant {variant_num}. "
-                        f"Text output: {text_output}"
-                    )
-                    return None
+                    raise RuntimeError(f"No image was generated. Text output: {text_output}")
 
-                # Process variant result
-                return process_variant_result(
-                    variant_num,
-                    image,
-                    self.file_name,
-                    self.num_variants,
-                    compress_image_for_base64,
-                    images_dir,
-                )
+                # Save the image
+                filename = f"{self.file_name}.png"
+                filepath = os.path.join(images_dir, filename)
+                image.save(filepath, "PNG")
+                
+                print(f"Thumbnail saved to: {filepath}")
+                return filepath
+                
             except Exception as e:
-                print(f"Error generating variant {variant_num}: {str(e)}")
-                return None
+                print(f"Error generating thumbnail: {str(e)}")
+                raise
 
-        # Step 5: Run variants in parallel
-        results = await run_parallel_variants(generate_single_variant, self.num_variants)
+        # Step 5: Generate the thumbnail
+        filepath = generate_single_variant()
+        
+        if not filepath:
+            raise RuntimeError("Thumbnail generation failed")
 
-        if not results:
-            raise RuntimeError("No variants were successfully generated")
-
-        # Step 6: Create and print result summary
-        result_text = create_result_summary(results, "Generated")
-        print(result_text)
-
-        # Step 7: Return only file paths (remove base64 data)
-        return result_text
+        # Step 6: Return file path
+        return f"Generated thumbnail: {filepath}"
 
 if __name__ == "__main__":
     import asyncio
