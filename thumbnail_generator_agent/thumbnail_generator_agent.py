@@ -2,7 +2,7 @@ from agency_swarm import Agent, ModelSettings
 
 
 thumbnail_generator_agent = Agent(
-    name="thumbnail_generator_agent",
+    name="ThumbnailGeneratorAgent",
     description="Generates optimized thumbnail text concepts with problem, benefit, and curiosity angles for high CTR YouTube thumbnails",
     instructions="./instructions.md",
     files_folder="./files",

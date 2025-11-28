@@ -8,3 +8,5 @@ python-dotenv
 notion-client
 nest_asyncio
 google-api-python-client
+google-genai
+Pillow
