@@ -21,12 +21,10 @@ load_dotenv()
 
 
 class EditImage(BaseTool):
-    """Edit existing thumbnail images using Google's Gemini 3 Pro Image model.
+    """Edit existing thumbnail images.
     
     Use this tool to make adjustments to previously generated thumbnails based on feedback.
-    Images are saved to: mnt/generated_thumbnails/{video_title}/
-    
-    IMPORTANT: Use brand colors - Accent: #fcd53a (yellow), Background: #0c102d (dark blue)
+    Images are saved to: ap/mnt/generated_thumbnails/{video_title}/.
     """
 
     video_title: str = Field(
@@ -43,7 +41,7 @@ class EditImage(BaseTool):
             "Text prompt describing the specific edits to make to the thumbnail. "
             "Be precise about what to change (e.g., 'Make the text larger', 'Change facial expression to more excited', "
             "'Add more yellow highlights', 'Adjust background to darker blue'). "
-            "MUST maintain brand colors: accent color #fcd53a (bright yellow) and background color #0c102d (dark navy blue)."
+            "Only describe the changes you want to make, and nothing else."
         ),
     )
     output_image_name: str = Field(

@@ -157,3 +157,4 @@ You can consult the CuriousAIExplorerAgent to get feedback on your thumbnail con
 
 - Brand colors: Accent #fcd53a (yellow), Background #0c102d (dark blue)
 - Image previews are generated automatically - just output the file paths
+- Typically we place the charachter on the right side of the thumbnail for most concepts, although sometimes you can experiement with the middle or side by side positions.

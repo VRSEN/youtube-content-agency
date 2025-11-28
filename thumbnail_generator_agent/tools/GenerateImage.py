@@ -23,9 +23,11 @@ load_dotenv()
 class GenerateImage(BaseTool):
     """Generate thumbnail images using Google's Gemini 3 Pro Image model.
     
-    Images are saved to: mnt/generated_thumbnails/
+    Images are saved to: /app/mnt/generated_thumbnails/
     
-    IMPORTANT: Use brand colors - Accent: #fcd53a (yellow), Background: #0c102d (dark blue)
+    IMPORTANT: reference images are automatically loaded for the generation, so you don't need to describe the charachter, the colors or the style, you can simply say "put the charachter from the reference images on the right side of the thumbnail". You don't need to describe the style and branding, simply explain the scene and what to show on the thumbnail, including visual elements, text and face expression. 
+
+    This tool is stateless and does not allow reusing previous prompts. Use EditImage tool to make changes to the previous thumbnail.
     """
 
     video_title: str = Field(
@@ -35,10 +37,8 @@ class GenerateImage(BaseTool):
     prompt: str = Field(
         ...,
         description=(
-            "The text prompt describing the thumbnail image to generate. Be specific about the visual elements, "
-            "facial expressions, colors, text placement, and overall composition. "
-            "MUST include brand colors: accent color #fcd53a (bright yellow) and background color #0c102d (dark navy blue). "
-            "Start with 'Generate a YouTube thumbnail image' and describe the thumbnail in detail."
+            "The text prompt describing the thumbnail image to generate. Be specific about the visual elements."
+            "Start with 'Generate a YouTube thumbnail image based on the reference images' and describe the thumbnail in detail."
         ),
     )
     file_name: str = Field(
