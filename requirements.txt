@@ -1,7 +1,10 @@
 agency-swarm[fastapi]>=1.4.1
 agency-swarm[litellm]>=1.4.1
+agency-swarm[jupyter]>=1.4.1
 fastapi
 uvicorn
 youtube-transcript-api
 python-dotenv
 notion-client
+nest_asyncio
+google-api-python-client

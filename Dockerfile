@@ -30,4 +30,8 @@ COPY requirements.txt .
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
+# uninstall and install agency-swarm from source
+RUN pip uninstall -y agency-swarm && \
+    pip install git+https://github.com/VRSEN/agency-swarm.git
+
 CMD python -u main.py

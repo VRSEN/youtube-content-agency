@@ -1,0 +1,1 @@
+from .thumbnail_generator_agent import thumbnail_generator_agent
