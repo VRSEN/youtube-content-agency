@@ -118,6 +118,43 @@ def create_result_summary(results, operation_name):
     return result_text
 
 
+def load_image_by_name(image_name: str, images_dir: str) -> tuple[Image.Image | None, str | None, str | None]:
+    """
+    Load an image by name from the specified directory.
+    
+    Args:
+        image_name: Name of the image file (with or without extension)
+        images_dir: Directory path where the image is located
+        
+    Returns:
+        Tuple of (PIL Image object or None, full path or None, error message or None)
+    """
+    supported_extensions = ['.png', '.jpg', '.jpeg', '.webp']
+    
+    # Try to find the image with different extensions
+    for ext in supported_extensions:
+        if image_name.endswith(ext):
+            # User provided extension, try exact match first
+            image_path = Path(images_dir) / image_name
+            if image_path.exists():
+                try:
+                    image = Image.open(image_path)
+                    return image, str(image_path), None
+                except Exception as e:
+                    return None, None, f"Failed to load image {image_path}: {str(e)}"
+        
+        # Try adding extension
+        image_path = Path(images_dir) / f"{image_name}{ext}"
+        if image_path.exists():
+            try:
+                image = Image.open(image_path)
+                return image, str(image_path), None
+            except Exception as e:
+                return None, None, f"Failed to load image {image_path}: {str(e)}"
+    
+    return None, None, f"Image '{image_name}' not found in {images_dir}"
+
+
 def load_all_reference_images() -> list[Image.Image]:
     """
     Automatically load all reference images from the reference_thumbnails folder.

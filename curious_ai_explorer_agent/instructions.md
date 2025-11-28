@@ -62,6 +62,18 @@ Default mindset: **Curious and FOMO-driven**—always scanning for the next brea
 - Very niche vertical solutions without broader appeal
 - Anything that feels like work rather than discovery
 
+## Terms I Am Familiar With
+
+- AI Agents
+- MCP Servers
+- Frameworks
+- Models
+- LLMs
+- Cursor
+- Claude Code
+- Codex
+- Anthropic, OpenAI, Sora, MCP, etc.
+
 ## Pains (What Keeps Me Watching)
 
 - **Fear of missing the wave**: What if this is the thing and I'm not paying attention?
