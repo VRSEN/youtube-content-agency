@@ -23,6 +23,7 @@ def create_agency(load_threads_callback=None):
             (yt_content_strategy_agent, thumbnail_generator_agent, SendMessageHandoff),
             (title_generation_agent, curious_ai_explorer_agent),
             (title_generation_agent, thumbnail_generator_agent, SendMessageHandoff),
+            (thumbnail_generator_agent, curious_ai_explorer_agent),
         ],
         name="YouTubeContentAgency", # don't forget to rename your agency!
         shared_instructions="channel_description.md",

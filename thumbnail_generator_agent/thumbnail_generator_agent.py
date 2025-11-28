@@ -1,4 +1,5 @@
 from agency_swarm import Agent, ModelSettings
+from openai.types.shared import Reasoning
 
 
 thumbnail_generator_agent = Agent(
@@ -9,5 +10,9 @@ thumbnail_generator_agent = Agent(
     tools_folder="./tools",
     model="gpt-5.1",
     model_settings=ModelSettings(
+        reasoning=Reasoning(
+            effort="medium",
+            summary="auto"
+        ),
     ),
 )
