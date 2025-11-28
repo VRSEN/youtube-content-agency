@@ -7,7 +7,7 @@ ENV PYTHONUNBUFFERED=1 \
 WORKDIR /app
 
 # Install uv and Node.js
-RUN apt-get update && apt-get install -y curl && \
+RUN apt-get update && apt-get install -y curl git && \
     curl -LsSf https://astral.sh/uv/install.sh | sh && \
     curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
     apt-get install -y nodejs && \
