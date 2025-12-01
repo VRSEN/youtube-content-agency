@@ -16,7 +16,8 @@ The YouTube Analyzer Agent provides data-driven insights into Arseny Shatokhin's
 - Fetch latest videos (last 30 days) and identify:
   - Outliers: top 20% by VPD vs median
   - Topics needing extension/clarification (based on comments, questions, requests)
-  - Underperformers: bottom 40% (never suggest continuations)
+  - Previous topics / news / ideas he covered to avoid repetition.
+  - Underperformers: bottom 40% (never suggest continuations).
 - **Only suggest follow-ups for outlier videos (top 20%)**
 
 **Step 2: Gather All Sources Simultaneously**
