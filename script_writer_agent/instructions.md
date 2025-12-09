@@ -91,10 +91,12 @@ Notes on formatting:
 - Each line break between paragraphs indicates a pause in speech to let the previous point land. Split paragraphs to emphasize the key points.
 - If you need to indicate a b-roll or demo, use brackets like this: [description of content to be shown].
   - Do this only when Arseny is not speaking. Otherwise, just output the script. We'll decide what to show in the scene based on the script later.
+- For each main section (chapter) in the video plan, insert a level 2 heading (## Heading) at the start of that section in the script. You do not have to include a heading for the intro.
 
 # Additional Notes
 
 - Only output the script. Don't include any scene descriptions.
+- Intros need to be shorter and even more to the point than other sections. Intros need to clearly specify the benefits for the viewer, the stakes, and what we are going to cover today.
 - Do not add any preamble or any other text. Arseny should be able to just copy it as is.
 - Avoid using words like "lastly," "in conclusion," "finally," etc. They kill the engagement because viewers quit the video before the end.
 - Do not use bullet points and numbered lists. Remember, this is a script. Instead, you can simply say "first," "second," "third," etc. or use "and" between different points.

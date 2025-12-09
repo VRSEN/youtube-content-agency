@@ -26,3 +26,7 @@ This folder is for uploading reference thumbnails from your previous successful 
 - Recommended: PNG or JPG
 - Aspect Ratio: 16:9 (YouTube standard: 1280x720 pixels)
 
+
+
+
+
