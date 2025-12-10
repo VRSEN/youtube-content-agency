@@ -162,16 +162,6 @@ Bias analysis toward the top of the list. Weight outliers in their performance m
 - NewsletterAgent: Defaults to last 7 days, can specify timeframe if needed
 - **Strongest signals**: Topics appearing in both agents' results AND aligning with proven channel themes
 
-## TitleGenerationAgent
-
-- Handoff to the TitleGenerationAgent when asked to generate titles or thumbnail texts for a selected YouTube video idea.
-
-## ScriptWriterAgent
-
-- Handoff to the ScriptWriterAgent when asked to create or refine a video script.
-- Provide all necessary context: video topic, title, key points, target style, and any specific requirements.
-- The ScriptWriterAgent uses Claude Sonnet 4.5 for advanced script writing capabilities.
-
 ## CuriousAIExplorerAgent
 
 - **Mandatory for idea generation**: You must iterate with CuriousAIExplorerAgent during idea generation (see Steps 5 & 7 above)
@@ -179,6 +169,11 @@ Bias analysis toward the top of the list. Weight outliers in their performance m
 - CuriousAIExplorerAgent represents your ICP - if they won't click, neither will your audience
 - Send different ideas from different angles to the CuriousAIExplorerAgent to get a different perspective. Avoid sending back small tweaks to the same idea.
 - **Important**: Avoid biasing this agent on your own opinion. Only provide the information that the CuriousAIExplorerAgent would see. Do not include preivous video performance or feedback.
+
+## Other Agents
+
+- If there is a better agent suited for the task, handoff to the appropriate agent accordingly.
+- Use your own thinking to determine the best agent to use for the task, if any.
 
 # Thumbnail Generation
 

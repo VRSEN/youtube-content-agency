@@ -9,15 +9,17 @@ from agency_swarm.tools.send_message import SendMessageHandoff
 from curious_ai_explorer_agent import curious_ai_explorer_agent
 from script_writer_agent import script_writer_agent
 from thumbnail_generator_agent import thumbnail_generator_agent
+from planner_agent import planner_agent
 
 # do not remove this method, it is used in the main.py file to deploy the agency (it has to be a method)
 def create_agency(load_threads_callback=None):
     agency = Agency(
-        yt_content_strategy_agent, title_generation_agent, thumbnail_generator_agent, script_writer_agent, curious_ai_explorer_agent,
+        yt_content_strategy_agent, title_generation_agent, thumbnail_generator_agent, script_writer_agent, planner_agent, curious_ai_explorer_agent,
         communication_flows=[
             (yt_content_strategy_agent, title_generation_agent, SendMessageHandoff),
             (yt_content_strategy_agent, grok_news_agent),
             (yt_content_strategy_agent, script_writer_agent, SendMessageHandoff),
+            (yt_content_strategy_agent, planner_agent, SendMessageHandoff),
             (yt_content_strategy_agent, newsletter_agent),
             (yt_content_strategy_agent, curious_ai_explorer_agent),
             (yt_content_strategy_agent, thumbnail_generator_agent, SendMessageHandoff),
@@ -25,6 +27,8 @@ def create_agency(load_threads_callback=None):
             (title_generation_agent, thumbnail_generator_agent, SendMessageHandoff),
             (thumbnail_generator_agent, curious_ai_explorer_agent),
             (script_writer_agent, curious_ai_explorer_agent),
+            (planner_agent, curious_ai_explorer_agent),
+            (planner_agent, script_writer_agent, SendMessageHandoff),
         ],
         name="YouTubeContentAgency", # don't forget to rename your agency!
         shared_instructions="channel_description.md",
