@@ -25,6 +25,7 @@ def create_agency(load_threads_callback=None):
             (yt_content_strategy_agent, thumbnail_generator_agent, SendMessageHandoff),
             (title_generation_agent, curious_ai_explorer_agent),
             (title_generation_agent, thumbnail_generator_agent, SendMessageHandoff),
+            (title_generation_agent, planner_agent, SendMessageHandoff),
             (thumbnail_generator_agent, curious_ai_explorer_agent),
             (script_writer_agent, curious_ai_explorer_agent),
             (planner_agent, curious_ai_explorer_agent),
