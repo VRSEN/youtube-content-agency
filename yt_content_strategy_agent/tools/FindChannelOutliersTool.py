@@ -6,7 +6,6 @@ import datetime
 import re
 import os
 from typing import Optional
-from googleapiclient.discovery import build
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -25,6 +24,23 @@ def _parse_duration_to_seconds(dur: str) -> int:
         elif unit == 'S':
             seconds = int(val)
     return hours * 3600 + minutes * 60 + seconds
+
+
+def _median(values: list[float]) -> float:
+    """
+    Median of a list of numbers.
+
+    - Odd length: middle value of sorted list
+    - Even length: average of the two middle values
+    """
+    if not values:
+        return 0.0
+    vals = sorted(float(v) for v in values)
+    n = len(vals)
+    mid = n // 2
+    if n % 2 == 1:
+        return vals[mid]
+    return (vals[mid - 1] + vals[mid]) / 2.0
 
 
 class FindChannelOutliersTool(BaseTool):
@@ -72,6 +88,22 @@ class FindChannelOutliersTool(BaseTool):
         - List of outlier videos (top 20% performers)
         """
         # Step 1: Initialize YouTube API client
+        try:
+            # Lazy import so the module can be imported (e.g., for tests / schema inspection)
+            # even if google-api-python-client isn't installed in the current environment.
+            from googleapiclient.discovery import build
+        except Exception as e:
+            return json.dumps(
+                {
+                    "error": (
+                        "google-api-python-client is required but could not be imported. "
+                        "Install it and retry."
+                    ),
+                    "details": f"{type(e).__name__}: {e}",
+                },
+                indent=2,
+            )
+
         api_key = os.getenv("YOUTUBE_API_KEY")
         if not api_key:
             return json.dumps({"error": "YOUTUBE_API_KEY not found in environment variables"}, indent=2)
@@ -184,7 +216,7 @@ class FindChannelOutliersTool(BaseTool):
         vpd_values = [v['vpd_28'] for v in videos_sorted]
         vpd_values_sorted = sorted(vpd_values)
         
-        median = vpd_values_sorted[len(vpd_values_sorted) // 2]
+        median = _median(vpd_values_sorted)
         idx_80 = max(0, math.floor(0.8 * (len(vpd_values_sorted) - 1)))
         p80 = vpd_values_sorted[idx_80]
         
