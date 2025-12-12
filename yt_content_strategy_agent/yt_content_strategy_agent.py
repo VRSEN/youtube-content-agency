@@ -38,10 +38,10 @@ yt_content_strategy_agent = Agent(
     instructions="./instructions.md",
     tools_folder="./tools",
     tools=[WebSearchTool()],
-    model="gpt-5.1",
+    model="gpt-5.2",
     model_settings=ModelSettings(
         reasoning=Reasoning(
-            effort="medium",
+            effort="high",
             summary="auto"
         ),
     ),
