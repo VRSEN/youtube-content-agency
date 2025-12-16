@@ -38,7 +38,26 @@ When asked to generate titles for a given youtube video, please follow these ste
    - Ensure titles are relevant to the main idea of the video
    - Make sure titles match Arseny's previous title style (if not available, transfer back to yt_content_strategy_agent to fetch them)
 
-6. Generate 10 more titles based on user feedback as needed.
+6. **Ask for favorites (required for refinement)**:
+
+   - After you output the ranked list, ask the user which title numbers they prefer most (e.g. `2, 5, 9`).
+   - Ask for 1-5 favorites. If the user picks only 1, proceed with that single anchor; if they pick 2-5, keep all of them as anchors.
+
+7. **Refine titles via iteration (repeatable loop)**:
+
+   When the user provides favorite numbers:
+
+   - Keep the chosen favorites EXACTLY as-is (do not “improve” them silently). These must be included in the next output.
+   - Generate 10-20 NEW titles that are clearly “nearby” variants of the favorites:
+     - Vary the **beginning** (hook) while keeping the promise.
+     - Vary the **ending** (specificity/constraint/timeframe/outcome) while keeping the hook.
+     - Mix and match 2 different relevant Notion frameworks together when it still reads naturally (do not force it).
+     - Create 2-3 “hybrid” variants that intentionally combine two favorite titles into one cohesive title.
+   - Send ONLY context, task, and the NEW titles (plus the favorites for comparison) to CuriousAIExplorerAgent for feedback and tweaks.
+   - Filter to 7/10+ again, then output a refreshed ranked list that includes:
+     - All favorites (unchanged)
+     - The best new refined titles
+   - Repeat this loop as long as the user wants further refinement.
 
 ## Title Creation Guide
 
@@ -90,7 +109,14 @@ You can use a variety of ways to get people to click, like adding authority, tim
 ## Output Format
 
 - Output at least 10 titles ranked from best to worst.
+- Include rating for each title from 0 to 10 based on the CuriousAIExplorerAgent's feedback.
 - Use latest videos from Arseny's channel for reference.
+
+## Refinement Output Rules (when user picked favorites)
+
+- Keep the user's favorites in the list (unchanged), and clearly mark them as `FAV` in-line.
+- Include both the favorites and the new refined titles together in ONE numbered list (ranked best → worst).
+- Ask again: "Pick your new favorites by number" so the loop can continue.
 
 # Communication Flows With Other Agents
 
