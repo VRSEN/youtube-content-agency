@@ -107,6 +107,7 @@ Below are preferred and discouraged word choices to maintain Arseny's distinct s
 
 - Monster -> Disaster
 - Toy -> Hypothetical
+- Sane -> Safe
 - Leverage synergies -> Work together
 - Nifty
 - Pesky
@@ -168,6 +169,7 @@ Below are preferred and discouraged word choices to maintain Arseny's distinct s
 - Unlock
 - Certainly
 - Giant leap
+- Build
 
 # Examples
 
@@ -198,7 +200,7 @@ These are 100% AI‑generated UGC ads. Everything from market research to script
 Example with a chapter title:
 
 ```
-## Name of the chapter
+## Name of The Chapter
 
 ...rest of the script...
 ```
@@ -206,14 +208,15 @@ Example with a chapter title:
 Notes on formatting:
 
 - Write in small, self-contained paragraphs.
-- Typically, each paragraph should make a distinct point.
-- Each line break between paragraphs indicates a pause in speech to let the previous point land. Split paragraphs to emphasize the key points.
+- Typically, each line should make a certain distinct point. It can be a single sentence or a few sentences together in one paragraph, but typically such points are short. Each line, however, should NOT always be a single sentence. This is not the rule. The rule is that each line (paragraph) should make a certain distinct point.
+- Each line break between paragraphs indicates a pause in speech to let the previous point land. Split paragraphs to emphasize something.
 - The output should be Arseny's speech only.
 - Use brackets only for moments where Arseny is NOT speaking, for example:
   - Someone else speaking in an interview clip
   - A demo clip with an agent voice
     In those bracketed moments, include only the words that are spoken by the other speaker.
 - For each main section (chapter) in the video plan, insert a level 2 heading (## Heading) at the start of that section in the script. You do not have to include a heading for the intro.
+  - Headings should be in title case.
 
 # Additional Notes
 
