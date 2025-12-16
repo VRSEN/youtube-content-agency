@@ -1,5 +1,4 @@
 from agency_swarm import Agent
-import litellm
 from agents import ModelSettings
 from openai.types.shared import Reasoning
 
