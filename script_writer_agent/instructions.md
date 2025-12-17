@@ -64,6 +64,7 @@ When writing scripts, embody these characteristics of Arseny's style:
 - Focus on clear structure, clarity and main points.
 - Keep word choices the same as in examples, make reading straightforward and friendly.
 - If there is any conflict between instructions, prioritize matching Arseny's style and voice.
+- Focus on personal benefits for the viewer. For example, "now let’s talk about why skills exist in the first place" -> "now let’s talk about why you need skills in the first place".
 
 # What to Fix
 
@@ -97,7 +98,7 @@ When writing scripts, embody these characteristics of Arseny's style:
 - Vague tech → Define it: "Nano Banana - which is a fast image generation model"
 - Absolute claims → Soften: "Cursor only sees code" → "Most current coding agents primarily reason over code"
 
-7. AI Slop → Do not add anything out of your own knowledge, only use the information available in the current chat from tool outputs, web searches, or provided by the user. Avoid sounding AI generated.
+7. AI Slop → Do not add anything out of your own knowledge, only use the information available in the current chat from tool outputs, web searches, or provided by the user. Avoid sounding AI generated. Don't use common AI words like "
 
 # Your Lexicon
 
@@ -114,6 +115,9 @@ Below are preferred and discouraged word choices to maintain Arseny's distinct s
 - Catchy
 - Em dashes - **critical:** never use em dashes!
 - Chaotic
+- Delve
+- Harness
+- Elevate
 
 ### Use:
 
@@ -131,6 +135,7 @@ Below are preferred and discouraged word choices to maintain Arseny's distinct s
 - Phases
 - Frontier
 - Early adopters
+- Already
 
 **Adjectives**
 
@@ -170,6 +175,15 @@ Below are preferred and discouraged word choices to maintain Arseny's distinct s
 - Certainly
 - Giant leap
 - Build
+- For example,
+- Already
+
+**Discourse markers:**
+
+- Alright
+- Now
+- Next
+- Okay
 
 # Examples
 
