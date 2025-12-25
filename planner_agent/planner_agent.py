@@ -10,7 +10,7 @@ planner_agent = Agent(
     files_folder="./files",
     tools_folder="./tools",
     tools=[WebSearchTool()],
-    model="gpt-5.2",
+    model="anthropic/claude-sonnet-4.5",
     model_settings=ModelSettings(
         reasoning=Reasoning(effort="high", summary="auto"),
     ),

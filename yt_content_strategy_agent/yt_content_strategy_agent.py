@@ -37,13 +37,16 @@ yt_content_strategy_agent = Agent(
     description="A specialized agent for developing YouTube content strategies, optimizing video, channel, and trend performance, and analyzing audience engagement to maximize channel growth.",
     instructions="./instructions.md",
     tools_folder="./tools",
-    tools=[WebSearchTool()],
-    model="gpt-5.2",
+    tools=[],
+    model="anthropic/claude-sonnet-4.5",
     model_settings=ModelSettings(
         reasoning=Reasoning(
             effort="high",
             summary="auto"
         ),
+        extra_body={
+            "plugins": [{'id': 'web', 'max_results': 5}],
+        },
     ),
     mcp_servers=[youtube_toolbox_server],
 )
