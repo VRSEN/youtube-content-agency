@@ -44,9 +44,9 @@ yt_content_strategy_agent = Agent(
             effort="high",
             summary="auto"
         ),
-        extra_body={
-            "plugins": [{'id': 'web', 'max_results': 5}],
-        },
+        # extra_body={
+        #     "plugins": [{'id': 'web', 'max_results': 5}],
+        # },
     ),
     mcp_servers=[youtube_toolbox_server],
 )
