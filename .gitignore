@@ -134,6 +134,8 @@ ENV/
 env.bak/
 venv.bak/
 .env
+mnt/
+thumbnail_generator_agent/test
 
 # Spyder project settings
 .spyderproject
