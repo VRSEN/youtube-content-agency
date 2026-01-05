@@ -14,6 +14,8 @@ BASE_DIR.mkdir(parents=True, exist_ok=True)
 
 # Reference thumbnails directory (in agent folder)
 REFERENCE_DIR = Path(__file__).parent.parent / "reference_thumbnails"
+BACKGROUND_DIR = Path(__file__).parent.parent / "thumbnail backgrounds"
+EMOTION_DIR = Path(__file__).parent.parent / "Emotion References"
 
 OUTPUT_FORMAT = "png"
 
@@ -153,6 +155,23 @@ def load_image_by_name(image_name: str, images_dir: str) -> tuple[Image.Image | 
                 return None, None, f"Failed to load image {image_path}: {str(e)}"
     
     return None, None, f"Image '{image_name}' not found in {images_dir}"
+
+
+def load_reference_image_by_name(image_name: str, reference_dir: Path) -> tuple[Image.Image, str]:
+    """
+    Load a reference image by name from a specific directory.
+
+    Args:
+        image_name: Name of the image file (with or without extension)
+        reference_dir: Directory path where the image is located
+
+    Returns:
+        Tuple of (PIL Image object, full path)
+    """
+    image, image_path, load_error = load_image_by_name(image_name, str(reference_dir))
+    if load_error:
+        raise FileNotFoundError(load_error)
+    return image, image_path
 
 
 def load_all_reference_images() -> list[Image.Image]:
