@@ -605,34 +605,44 @@ Follow this complete workflow for every thumbnail generation request:
 
 **CRITICAL: State the selected priority mode at the start of your prompt.**
 
+**CRITICAL RULE: Never include measurement units (px, %, pt), arrows (→, ←, ↑, ↓), or layout annotations in the prompt. These are for planning only and must NOT appear in the image. Use qualitative descriptions instead.**
+
 **Required content checklist (order is flexible):**
 - Start with: "Generate a YouTube thumbnail image based on the reference images"
 - **State priority mode**: "This thumbnail uses [Text-First/Visual-First/Person-First] priority mode"
 - **Explain hierarchy**: "[Element] is the primary hook, [element] supports, [element] fills space"
 - Text to display and its styling (bold, italicized, SF Pro Display, high-contrast, subtle grain)
-- Text placement and safe zones (adjusted based on priority mode)
-- Line breaks and internal padding if multiple lines, plus margin to other groups
+- Text placement and safe zones using qualitative language (adjusted based on priority mode)
+- Line breaks and internal spacing described qualitatively, plus separation between groups
 - Visual type (Real/Abstract/IRL) and complexity (Simple/Complex)
-- Visual description and placement (adjusted based on priority mode)
+- Visual description and placement using qualitative language (adjusted based on priority mode)
 - Person pose, framing, clothing, and emotion based on the selected reference
 - Include the phrase: "preserve this person identity"
 - Background type and characteristics based on the selected reference
 - Any layout-specific constraints (panel limits, comparison layout rules, etc.)
 
-**Final prompt must include:**
+**Final prompt must include (using qualitative language):**
 - **Priority mode statement** (Text-First/Visual-First/Person-First)
 - **Element hierarchy and sizing** (which element gets largest size, highest contrast, most prominent position)
 - Background type and style
-- Text formatting instructions (with group padding specifications adapted to priority mode)
-- Visual placement and complexity notes (with group spacing adapted to priority mode)
+- Text formatting instructions with qualitative spacing descriptions (adapted to priority mode)
+- Visual placement and complexity notes with qualitative spacing (adapted to priority mode)
 - Person framing and pose (adapted to priority mode)
-- Safe zones for all elements (adapted to priority mode)
-- Group padding system: internal padding within groups, margins between groups
+- Safe zones described qualitatively (generous, moderate, tight) for all elements
+- Group spacing system described qualitatively: comfortable spacing within groups, clear separation between groups
 - Pose and emotion specifications
 - Clothing requirement
 - "preserve this person identity"
 - Any layout-specific constraints
-- Spacing hierarchy: margins between groups > padding within groups
+- Spacing hierarchy expressed qualitatively: separation between groups is greater than spacing within groups
+
+**Qualitative spacing vocabulary to use in prompts:**
+- Instead of "85px padding": use "generous safe zones" or "ample margins"
+- Instead of "60px padding": use "moderate safe zones" or "comfortable margins"
+- Instead of "20px spacing": use "tight line spacing" or "close spacing"
+- Instead of "50px margin": use "clear separation" or "distinct spacing between groups"
+- Instead of "125px height": use "large text" or "prominent text size"
+- Instead of "90px height": use "moderate text size" or "smaller text"
 
 ### 5.5 Generate the Image
 
@@ -670,3 +680,4 @@ Follow this complete workflow for every thumbnail generation request:
 - **Iteration**: If the first generation doesn't meet requirements, analyze what went wrong and adjust the prompt accordingly
 - **Communication**: Always communicate clearly with other agents, provide context, and acknowledge receipt of information
 - **Creative judgment**: You now have decision-making power over element priority - use it thoughtfully based on what creates the strongest hook
+- **NEVER include technical annotations**: Measurement units (px, %, pt) and arrows must NEVER appear in generation prompts - use qualitative descriptions only (generous, tight, clear separation, etc.)
