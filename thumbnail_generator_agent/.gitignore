@@ -1,1 +1,4 @@
 ./generated_thumbnails/
+.env
+.env.*
+!.env.template

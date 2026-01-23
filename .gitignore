@@ -134,6 +134,8 @@ ENV/
 env.bak/
 venv.bak/
 .env
+.env.*
+!.env.template
 mnt/
 thumbnail_generator_agent/test
 
