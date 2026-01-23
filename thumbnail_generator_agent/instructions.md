@@ -605,7 +605,7 @@ Follow this complete workflow for every thumbnail generation request:
 
 **CRITICAL: State the selected priority mode at the start of your prompt.**
 
-**CRITICAL RULE: Never include measurement units (px, %, pt), arrows (→, ←, ↑, ↓), or layout annotations in the prompt. These are for planning only and must NOT appear in the image. Use qualitative descriptions instead.**
+**CRITICAL RULE: Never include measurement units (px, %, pt), arrows (->, <-, ^, v), or layout annotations in the prompt. These are for planning only and must NOT appear in the image. Use qualitative descriptions instead.**
 
 **Required content checklist (order is flexible):**
 - Start with: "Generate a YouTube thumbnail image based on the reference images"
