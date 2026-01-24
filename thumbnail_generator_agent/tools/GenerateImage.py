@@ -1,4 +1,4 @@
-"""Tool for generating thumbnail images using Google's Gemini 2.5 Flash Image model."""
+"""Tool for generating thumbnail images using Google's Gemini image model."""
 
 import os
 from typing import Literal
@@ -13,6 +13,9 @@ from thumbnail_generator_agent.tools.image_utils import (
     MODEL_NAME,
     extract_image_from_response,
     load_all_reference_images,
+    load_reference_image_by_name,
+    BACKGROUND_DIR,
+    EMOTION_DIR,
 )
 
 from dotenv import load_dotenv
@@ -21,11 +24,12 @@ load_dotenv()
 
 
 class GenerateImage(BaseTool):
-    """Generate thumbnail images using Google's Gemini 3 Pro Image model.
-    
+    """Generate thumbnail images using Google's Gemini image model.
+
     Images are saved to: /app/mnt/generated_thumbnails/
-    
-    IMPORTANT: reference images are automatically loaded for the generation, so you don't need to describe the charachter, the colors or the style, you can simply say "put the charachter from the reference images on the right side of the thumbnail". You don't need to describe the style and branding, simply explain the scene and what to show on the thumbnail, including visual elements, text and face expression. 
+
+    Provide background and emotion reference image names to attach those files to the request.
+    Reference thumbnails can be optionally attached for style guidance.
 
     This tool is stateless and does not allow reusing previous prompts. Use EditImage tool to make changes to the previous thumbnail.
     """
@@ -41,9 +45,30 @@ class GenerateImage(BaseTool):
             "Start with 'Generate a YouTube thumbnail image based on the reference images' and describe the thumbnail in detail."
         ),
     )
+    background_image_name: str = Field(
+        ...,
+        description=(
+            "Background reference image file name from thumbnail backgrounds/ "
+            "(with or without extension, e.g., 'Neutral.jpg' or 'Neutral')."
+        ),
+    )
+    emotion_image_name: str = Field(
+        ...,
+        description=(
+            "Emotion reference image file name from Emotion References/ "
+            "(with or without extension, e.g., 'serious.jpg' or 'serious')."
+        ),
+    )
     file_name: str = Field(
         ...,
         description="The name for the generated thumbnail file (without extension, e.g., 'problem_angle_v1')",
+    )
+    use_reference_thumbnails: bool = Field(
+        default=False,
+        description=(
+            "Attach reference_thumbnails images for optional style guidance. "
+            "Disabled by default."
+        ),
     )
     aspect_ratio: Literal["16:9"] = Field(
         default="16:9",
@@ -74,32 +99,51 @@ class GenerateImage(BaseTool):
 
         print(f"Generating thumbnail with prompt: {self.prompt}")
 
-        # Step 2: Automatically load all reference images from reference_thumbnails folder
-        reference_images = load_all_reference_images()
-        if reference_images:
-            print(f"Using {len(reference_images)} reference image(s) for style matching")
-        else:
-            print("No reference images found - generating without style reference")
+        # Step 2: Load background and emotion reference images
+        background_image, background_path = load_reference_image_by_name(
+            self.background_image_name,
+            BACKGROUND_DIR,
+        )
+        emotion_image, emotion_path = load_reference_image_by_name(
+            self.emotion_image_name,
+            EMOTION_DIR,
+        )
+        print(f"Using background reference: {background_path}")
+        print(f"Using emotion reference: {emotion_path}")
 
-        # Step 3: Initialize the Google AI client
-        client = genai.Client(api_key=api_key)
+        # Step 3: Optionally load reference thumbnails for style
+        reference_images = []
+        if self.use_reference_thumbnails:
+            reference_images = load_all_reference_images()
+            if reference_images:
+                print(f"Using {len(reference_images)} reference image(s) for style matching")
+            else:
+                print("No reference images found - generating without style reference")
 
         # Step 4: Get video-specific images directory
         images_dir = get_images_dir(self.video_title)
 
-        self.prompt = self.prompt.strip() + " Use attached previous thumbnails from our channel as a reference. Generate a new thumbnail as close as possible to the same style, using our branding, colors, style, similar elements, and the same person from references."
+        if self.use_reference_thumbnails and reference_images:
+            self.prompt = (
+                self.prompt.strip()
+                + " Use attached previous thumbnails from our channel as a reference. "
+                + "Generate a new thumbnail as close as possible to the same style, "
+                + "using our branding, colors, style, similar elements, and the same person from references."
+            )
+
+        # Step 5: Initialize the Google AI client
+        client = genai.Client(api_key=api_key)
 
         def generate_single_variant():
             """Generate a single thumbnail"""
             try:
                 print(f"Generating thumbnail...")
 
-                # Prepare contents for the API call
-                # If we have reference images, include them before the prompt
+                # Prepare contents for the API call (images first, then prompt)
+                contents = []
                 if reference_images:
-                    contents = reference_images + [self.prompt]
-                else:
-                    contents = [self.prompt]
+                    contents.extend(reference_images)
+                contents.extend([background_image, emotion_image, self.prompt])
 
                 # Generate image using Gemini 3 Pro Image
                 response = client.models.generate_content(
