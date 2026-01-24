@@ -1,5 +1,4 @@
 from agents import ModelSettings
-from openai.types.shared import Reasoning
 from agency_swarm import Agent
 
 curious_ai_explorer_agent = Agent(
@@ -9,10 +8,10 @@ curious_ai_explorer_agent = Agent(
     tools_folder="./tools",
     model="litellm/xai/grok-4",
     model_settings=ModelSettings(
-        reasoning=Reasoning(
-            effort="medium",
-            summary="auto"
-        ),
+        # reasoning=Reasoning(
+        #     effort="medium",
+        #     summary="auto"
+        # ),
     ),
 )
 
