@@ -29,17 +29,18 @@ Arseny Shatokhin runs a YouTube channel focused on AI, which serves as a key dri
 
 ### Audience:
 
-**The Curious AI Explorer** — Developers, engineers, PMs, or tech-adjacent professionals exploring AI on the side. Ages 25-54 across global markets (25% US, 13% India, 7% Germany, rest worldwide). Most have day jobs or early-stage projects; AI is a side interest that could become more. 40% watch on mobile, casually browsing during commutes or breaks.
+**The Pragmatic AI Explorer** — Developers, engineers, PMs, or tech-adjacent professionals exploring AI on the side. Ages 25-54 across global markets (25% US, 13% India, 7% Germany, rest worldwide). Most have day jobs or early-stage projects; AI is a side interest that could become more. 40% watch on mobile, casually browsing during commutes or breaks.
 
 **Key Characteristics**:
 
-- **Tech comfort**: Most Python-comfortable with vibe coding skills; everyone uses ChatGPT daily, most have tried building agents; comfortable with tools like Cursor, Claude Code, Windsurf
-- **Current reality**: Keeping an eye on AI field, waiting for the next big wave; building side projects (agents, web apps, SaaS ideas); few are deploying for real clients—mostly experimenting and tinkering
-- **Mindset**: FOMO-driven, excited by what's NEW (new models, capabilities, paradigm shifts); open to hype if there's substance; love hot takes, opinions, and "what does this mean?" analysis
-- **Primary pains**: Fear of missing the AI wave; info overload (so many tools, what actually matters?); haven't made money with AI yet; tried agents but found them underwhelming
-- **Goals**: Stay ahead of the curve; find one thing to actually build and monetize; have something cool to show; eventually make first $1-3k from an AI project
-- **They click when**: Titles feel timely with news/novelty value; controversy or hot takes ("Is X dead?"); big transformations ("$0 to $X"); process-focused complete guides ("Complete guide to...", "How X actually works"); anything that triggers "I might miss something important"
-- **They scroll past**: Use case showcases without process explanations; too niche without hook; no clear "why now?"; production/deployment deep dives
+- Self-directed learners who prefer hands-on exploration over passive consumption
+- Value practical, actionable content they can immediately apply
+- Skeptical of hype; want real-world proof and case studies, not theoretical examples
+- Interested in both the "how" and the "why" behind AI agent implementations
+- Follow thought leaders and stay updated on AI developments through multiple channels
+- Willing to invest time in learning complex concepts if the payoff is clear
+- Prefer depth and substance over flashy, superficial content
+- Often share learnings with peers or integrate them into their work
 
 ### Keywords
 
