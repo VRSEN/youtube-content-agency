@@ -14,6 +14,8 @@ from thumbnail_generator_agent.tools.image_utils import (
     extract_image_from_response,
     load_all_reference_images,
     load_reference_image_by_name,
+    load_text_style_reference,
+    infer_tone_from_background,
     BACKGROUND_DIR,
     EMOTION_DIR,
 )
@@ -111,6 +113,11 @@ class GenerateImage(BaseTool):
         print(f"Using background reference: {background_path}")
         print(f"Using emotion reference: {emotion_path}")
 
+        # Step 2.5: Infer tone from background and load matching text style reference
+        tone = infer_tone_from_background(self.background_image_name)
+        print(f"Inferred tone: {tone}")
+        text_style_ref = load_text_style_reference(tone)
+
         # Step 3: Optionally load reference thumbnails for style
         reference_images = []
         if self.use_reference_thumbnails:
@@ -143,7 +150,14 @@ class GenerateImage(BaseTool):
                 contents = []
                 if reference_images:
                     contents.extend(reference_images)
-                contents.extend([background_image, emotion_image, self.prompt])
+                contents.extend([background_image, emotion_image])
+
+                # Add text style reference if available
+                if text_style_ref:
+                    contents.append(text_style_ref)
+                    contents.append("Use the above image as a reference for text styling (font, color, effects, positioning).")
+
+                contents.append(self.prompt)
 
                 # Generate image using Gemini 3 Pro Image
                 response = client.models.generate_content(

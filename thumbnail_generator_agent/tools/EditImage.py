@@ -13,6 +13,7 @@ from thumbnail_generator_agent.tools.image_utils import (
     MODEL_NAME,
     load_image_by_name,
     extract_image_from_response,
+    load_text_style_reference,
 )
 
 from dotenv import load_dotenv
@@ -96,6 +97,15 @@ class EditImage(BaseTool):
             raise FileNotFoundError(load_error)
         print(f"Loaded image: {image_path}")
 
+        # Step 4.5: Check if edit involves text and load text style reference if needed
+        text_keywords = ["text", "font", "word", "title", "label", "typography", "letter", "heading"]
+        involves_text = any(keyword in self.edit_prompt.lower() for keyword in text_keywords)
+
+        text_style_ref = None
+        if involves_text:
+            # Use neutral tone for edits (we don't have background info)
+            text_style_ref = load_text_style_reference(tone="neutral")
+
         # Step 5: Add brand color reminder to edit prompt
         enhanced_prompt = self.edit_prompt.strip() + " Maintain brand colors: accent color #fcd53a (bright yellow) and background color #0c102d (dark navy blue)."
 
@@ -103,7 +113,14 @@ class EditImage(BaseTool):
             print(f"Generating edited thumbnail...")
 
             # Prepare contents for the API call
-            contents = [enhanced_prompt, image]
+            contents = [enhanced_prompt]
+
+            # Add text style reference if editing involves text
+            if text_style_ref:
+                contents.append(text_style_ref)
+                contents.append("Use the above image as a reference for text styling.")
+
+            contents.append(image)
 
             # Generate edited image using Gemini 3 Pro Image
             response = client.models.generate_content(

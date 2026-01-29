@@ -16,6 +16,7 @@ BASE_DIR.mkdir(parents=True, exist_ok=True)
 REFERENCE_DIR = Path(__file__).parent.parent / "reference_thumbnails"
 BACKGROUND_DIR = Path(__file__).parent.parent / "thumbnail backgrounds"
 EMOTION_DIR = Path(__file__).parent.parent / "Emotion References"
+TEXT_STYLE_DIR = Path(__file__).parent.parent / "Text style references"
 
 OUTPUT_FORMAT = "png"
 
@@ -212,6 +213,76 @@ def load_all_reference_images() -> list[Image.Image]:
             continue
     
     return images
+
+
+def load_text_style_reference(tone: str = "neutral") -> Image.Image | None:
+    """
+    Load the text style reference image from 'Text style references' folder based on tone.
+
+    Args:
+        tone: The emotional tone ('negative', 'positive', or 'neutral'). Defaults to 'neutral'.
+
+    Returns:
+        PIL Image object or None if not found.
+    """
+    # Normalize tone to lowercase
+    tone = tone.lower()
+
+    # Validate tone
+    if tone not in ["negative", "positive", "neutral"]:
+        print(f"Warning: Invalid tone '{tone}', defaulting to 'neutral'")
+        tone = "neutral"
+
+    reference_path = TEXT_STYLE_DIR / f"{tone}-text-style.jpg"
+
+    if not reference_path.exists():
+        print(f"Info: Text style reference not found at {reference_path}")
+        # Try to fall back to neutral if a specific tone was requested
+        if tone != "neutral":
+            neutral_path = TEXT_STYLE_DIR / "neutral-text-style.jpg"
+            if neutral_path.exists():
+                print(f"Info: Falling back to neutral text style reference")
+                reference_path = neutral_path
+            else:
+                return None
+        else:
+            return None
+
+    try:
+        image = Image.open(reference_path)
+        print(f"✓ Loaded text style reference: {reference_path.name}")
+        return image
+    except Exception as e:
+        print(f"Warning: Error loading text style reference: {e}")
+        return None
+
+
+def infer_tone_from_background(background_image_name: str) -> str:
+    """
+    Infer the emotional tone from the background image name.
+
+    Args:
+        background_image_name: Name of the background reference image
+
+    Returns:
+        Tone string: 'negative', 'positive', or 'neutral'
+    """
+    # Normalize to lowercase for comparison
+    bg_name = background_image_name.lower()
+
+    # Check for tone indicators in the background name
+    if "negative" in bg_name:
+        return "negative"
+    elif "positive" in bg_name:
+        return "positive"
+    elif "attention" in bg_name:
+        # Attention/urgent backgrounds are similar to negative tone
+        return "negative"
+    elif "neutral" in bg_name:
+        return "neutral"
+    else:
+        # Default to neutral for Panel, IRL, and other backgrounds
+        return "neutral"
 
 
 def compress_image_for_base64(image, max_size=(800, 800), quality=65):
